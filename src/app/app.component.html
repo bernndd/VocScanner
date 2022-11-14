@@ -350,6 +350,28 @@
 
   </div>
 
+  <div class="container">
+
+    <h1>Angular Webcam Capture Image from Camera - ItSolutionStuff.com</h1>
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <webcam
+          [trigger]="triggerObservable"
+          (imageCapture)="handleImage($event)"></webcam>
+
+        <button class="btn btn-success" (click)="triggerSnapshot();">Take A Snapshot</button>
+      </div>
+      <div class="col-md-6">
+
+        <div id="results">Your captured image will appear here...</div>
+        <img src="{{ captureImage }}" height="300px">
+
+      </div>
+    </div>
+  </div>
+
   <!-- Resources -->
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
