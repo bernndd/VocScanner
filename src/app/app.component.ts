@@ -8,7 +8,7 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'CameraTest';
+  title = 'VocScanner';
 
   private trigger: Subject<void> = new Subject();
 
