@@ -10,6 +10,12 @@ import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 export class AppComponent {
   title = 'VocScanner';
 
+  isShowDiv = false;
+
+  toggleDisplayDiv(){
+    this.isShowDiv = !this.isShowDiv;
+  }
+
   private trigger: Subject<void> = new Subject();
 
   public webcamImage!: WebcamImage;
