@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
-import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
+import {Component, OnInit} from '@angular/core';
+import {Subject, Observable} from 'rxjs';
+import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,16 @@ export class AppComponent {
 
   isShowDiv = false;
 
-  toggleDisplayDiv(){
+  toggleDisplayDiv() {
     this.isShowDiv = !this.isShowDiv;
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      const file = input.files[0];
+      console.log(file);
+    }
   }
 
   private trigger: Subject<void> = new Subject();
@@ -21,9 +29,10 @@ export class AppComponent {
   public webcamImage!: WebcamImage;
   private nextWebcam: Subject<any> = new Subject();
 
-  captureImage  = '';
+  captureImage = '';
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   /*------------------------------------------
     --------------------------------------------

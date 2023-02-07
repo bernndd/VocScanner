@@ -8,6 +8,11 @@
 
     <div class="row">
 
+      <form>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*">
+      </form>
+
+
       <div [hidden]="isShowDiv" class="col-md-6">
 
         <webcam
