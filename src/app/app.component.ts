@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Subject, Observable} from 'rxjs';
-import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
+import {Component} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {WebcamImage} from 'ngx-webcam';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,7 @@ import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 export class AppComponent {
   title = 'VocScanner';
 
-  isShowDiv = false;
-
-  toggleDisplayDiv() {
-    this.isShowDiv = !this.isShowDiv;
-  }
-
-  onFileSelected(event: Event) {
+  onFileSelected(event: Event):void {
     const input = event.target as HTMLInputElement;
     if (input.files) {
       const file = input.files[0];
@@ -24,51 +18,28 @@ export class AppComponent {
     }
   }
 
-  private trigger: Subject<void> = new Subject();
+  private trigger = new Subject<void>();
 
   public webcamImage!: WebcamImage;
-  private nextWebcam: Subject<any> = new Subject();
+  private nextWebcam = new Subject<any>();
 
   captureImage = '';
 
-  ngOnInit() {
-  }
-
-  /*------------------------------------------
-    --------------------------------------------
-    triggerSnapshot()
-    --------------------------------------------
-    --------------------------------------------*/
   public triggerSnapshot(): void {
     this.trigger.next();
   }
 
-  /*------------------------------------------
-  --------------------------------------------
-  handleImage()
-  --------------------------------------------
-  --------------------------------------------*/
   public handleImage(webcamImage: WebcamImage): void {
     this.webcamImage = webcamImage;
     this.captureImage = webcamImage!.imageAsDataUrl;
     console.info('received webcam image', this.captureImage);
   }
 
-  /*------------------------------------------
-    --------------------------------------------
-    triggerObservable()
-    --------------------------------------------
-    --------------------------------------------*/
   public get triggerObservable(): Observable<any> {
 
     return this.trigger.asObservable();
   }
 
-  /*------------------------------------------
-  --------------------------------------------
-  nextWebcamObservable()
-  --------------------------------------------
-  --------------------------------------------*/
   public get nextWebcamObservable(): Observable<any> {
 
     return this.nextWebcam.asObservable();

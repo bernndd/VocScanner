@@ -1,5 +1,16 @@
 package backend;
 
+import com.google.cloud.vision.v1.*;
+import com.google.protobuf.ByteString;
+
+import javax.ws.rs.core.Feature;
+import java.awt.*;
+import java.awt.Image;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
 public static class googleAPI{
 
   public static void test(){
@@ -38,7 +49,7 @@ public static class googleAPI{
         }
 
         // For full list of available annotations, see http://g.co/cloud/vision/docs
-        TextAnnotation annotation = res.getFullTextAnnotation();
+        TextAnnxotation annotation = res.getFullTextAnnotation();
         for (Page page : annotation.getPagesList()) {
           String pageText = "";
           for (Block block : page.getBlocksList()) {
