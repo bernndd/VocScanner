@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "CameraTest": {
+    "VocScanner": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "CameraTest:build:production"
+              "browserTarget": "VocScanner:build:production"
             },
             "development": {
-              "browserTarget": "CameraTest:build:development"
+              "browserTarget": "VocScanner:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "CameraTest:build"
+            "browserTarget": "VocScanner:build"
           }
         },
         "test": {

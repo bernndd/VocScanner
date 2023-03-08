@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {WebcamImage} from 'ngx-webcam';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import {WebcamImage} from 'ngx-webcam';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private http: HttpClient) { }
   title = 'VocScanner';
 
   onFileSelected(event: Event):void {
@@ -44,5 +46,16 @@ export class AppComponent {
 
     return this.nextWebcam.asObservable();
   }
+  public sendImageToServer(): void {
+    const formData = new FormData();
+    formData.append('image', this.captureImage); // Fügen Sie das aufgenommene oder hochgeladene Bild zur FormData hinzu
+    this.http.post('http://localhost:8080/api/upload', formData).subscribe(response => {
+      console.log('Image uploaded successfully!', response);
+    }, error => {
+      console.error('Error uploading image:', error);
+    });
+
+  }
+
 
 }
